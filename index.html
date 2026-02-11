@@ -1,402 +1,79 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="AG-EgoPose: Leveraging Action-Guided Motion and Kinematic Joint Encoding for Egocentric 3D Pose Estimation - Md Mushfiqur Azam, John Quarles, Kevin Desai">
-  <meta name="description" content="AG-EgoPose is a dual-stream egocentric 3D pose framework that fuses heatmap-based spatial tokens with action-guided temporal motion features using a transformer decoder with learnable joint tokens.">
-  <meta name="keywords" content="egocentric 3D pose estimation, fisheye, action-guided motion, ActionFormer, transformer decoder, joint tokens, spatiotemporal fusion, 2D heatmaps, kinematic constraints, AR/VR">
-  <meta name="author" content="Md Mushfiqur Azam, John Quarles, Kevin Desai">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="The University of Texas at San Antonio (UTSA)">
-  <meta property="og:title" content="AG-EgoPose: Leveraging Action-Guided Motion and Kinematic Joint Encoding for Egocentric 3D Pose Estimation">
-  <meta property="og:description" content="Dual-stream egocentric 3D pose estimation using heatmap tokens + action-guided motion features fused with a joint-token transformer decoder.">
-  <!-- TODO: set your final project URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: create/update preview image -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="AG-EgoPose - Research Preview">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AG-EgoPose: Leveraging Action-Guided Motion and Kinematic Joint Encoding for Egocentric 3D Pose Estimation">
-  <meta name="twitter:description" content="Dual-stream egocentric 3D pose estimation using heatmap tokens + action-guided motion features fused with a joint-token transformer decoder.">
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-
-  <!-- Academic / citation metadata -->
-  <meta name="citation_title" content="AG-EgoPose: Leveraging Action-Guided Motion and Kinematic Joint Encoding for Egocentric 3D Pose Estimation">
-  <meta name="citation_author" content="Azam, Md Mushfiqur">
-  <meta name="citation_author" content="Quarles, John">
-  <meta name="citation_author" content="Desai, Kevin">
-  <meta name="citation_publication_date" content="2026">
-  <meta name="citation_conference_title" content="Preprint">
-  <meta name="citation_pdf_url" content="static/pdfs/paper.pdf">
-
-  <title>AG-EgoPose | UTSA</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <title>Action-Guided EgoPose</title>
   <link rel="stylesheet" href="static/css/index.css">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "AG-EgoPose: Leveraging Action-Guided Motion and Kinematic Joint Encoding for Egocentric 3D Pose Estimation",
-    "description": "AG-EgoPose is a dual-stream egocentric 3D pose framework that fuses heatmap-based spatial tokens with action-guided temporal motion features using a transformer decoder with learnable joint tokens.",
-    "author": [
-      {"@type": "Person", "name": "Md Mushfiqur Azam", "affiliation": {"@type": "Organization", "name": "The University of Texas at San Antonio"}},
-      {"@type": "Person", "name": "John Quarles", "affiliation": {"@type": "Organization", "name": "The University of Texas at San Antonio"}},
-      {"@type": "Person", "name": "Kevin Desai", "affiliation": {"@type": "Organization", "name": "The University of Texas at San Antonio"}}
-    ],
-    "datePublished": "2026-02-11",
-    "publisher": {"@type": "Organization", "name": "Preprint"},
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "isAccessibleForFree": true
-  }
-  </script>
 </head>
 
 <body>
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
 
-  <!-- More Works Dropdown (optional) -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: replace with your lab's related works -->
-        <a href="https://github.com/Mushfiq5647/AG-EgoPose" class="work-item" target="_blank" rel="noopener">
-          <div class="work-info">
-            <h5>AG-EgoPose Code</h5>
-            <p>Official implementation.</p>
-            <span class="work-venue">GitHub</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
+<div class="container">
+
+  <div class="badge">Under Review</div>
+
+  <h1>Action-Guided Egocentric 3D Pose Estimation</h1>
+  <p class="authors">Sadia Mubashshira, Nazanin F. Karimi, Kevin Desai</p>
+  <p>University of Texas at San Antonio</p>
+
+  <div class="buttons">
+    <a class="btn">Paper</a>
+    <a class="btn">arXiv</a>
+    <a class="btn">Code</a>
   </div>
 
-  <main id="main-content">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container is-max-desktop">
-          <div class="columns is-centered">
-            <div class="column has-text-centered">
-              <h1 class="title is-1 publication-title">
-                AG-EgoPose: Leveraging Action-Guided Motion and Kinematic Joint Encoding for Egocentric 3D Pose Estimation
-              </h1>
+  <section>
+    <h2>Abstract</h2>
+    <p>
+      We propose an action-guided framework for egocentric 3D human pose estimation
+      that integrates spatial appearance cues and long-term motion dynamics.
+      Our approach addresses severe occlusion and limited field-of-view challenges
+      by leveraging action-aware temporal reasoning.
+    </p>
+  </section>
 
-              <div class="is-size-5 publication-authors">
-                <span class="author-block"><a href="#" target="_blank" rel="noopener">Md Mushfiqur Azam</a>,</span>
-                <span class="author-block"><a href="#" target="_blank" rel="noopener">John Quarles</a>,</span>
-                <span class="author-block"><a href="#" target="_blank" rel="noopener">Kevin Desai</a></span>
-              </div>
+  <section class="contrib">
+    <h2>Key Contributions</h2>
+    <ul>
+      <li>Dual-stream spatial and temporal modeling for egocentric pose.</li>
+      <li>Action-guided transformer fusion with learnable joint tokens.</li>
+      <li>Graph-based reasoning and LSTM for temporally coherent 3D predictions.</li>
+    </ul>
+  </section>
 
-              <div class="is-size-5 publication-authors">
-                <span class="author-block">The University of Texas at San Antonio (UTSA), San Antonio, TX, USA<br>Preprint</span>
-              </div>
+  <section>
+    <h2>Method</h2>
 
-              <div class="column has-text-centered">
-                <div class="publication-links">
-                  <span class="link-block">
-                    <a href="static/pdfs/paper.pdf" target="_blank" rel="noopener"
-                       class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                      <span>Paper</span>
-                    </a>
-                  </span>
+    <div class="method-box">
+      <h3>1. Spatial Feature Extraction</h3>
+      <ul>
+        <li>ResNet backbone extracts high-level semantic features.</li>
+        <li>Encodes static scene context for occluded joints.</li>
+      </ul>
 
-                  <span class="link-block">
-                    <a href="https://github.com/Mushfiq5647/AG-EgoPose" target="_blank" rel="noopener"
-                       class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="fab fa-github"></i></span>
-                      <span>Code</span>
-                    </a>
-                  </span>
+      <h3>2. Temporal Motion Modeling</h3>
+      <ul>
+        <li>Captures long-term motion dynamics across frames.</li>
+        <li>Ensures temporal consistency.</li>
+      </ul>
 
-                  <!-- TODO: enable when you have arXiv -->
-                  <!--
-                  <span class="link-block">
-                    <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener"
-                       class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="ai ai-arxiv"></i></span>
-                      <span>arXiv</span>
-                    </a>
-                  </span>
-                  -->
-                </div>
-              </div>
+      <h3>3. Action-Guided Fusion</h3>
+      <ul>
+        <li>Transformer decoder integrates spatial and motion streams.</li>
+        <li>Joint-wise adaptive fusion.</li>
+      </ul>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <h3>4. 3D Pose Regression</h3>
+      <ul>
+        <li>Graph reasoning for inter-joint constraints.</li>
+        <li>LSTM for sequential modeling.</li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Abstract -->
-    <section class="section hero is-light">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Abstract</h2>
-            <div class="content has-text-justified">
-              <p>
-                Egocentric 3D human pose estimation remains challenging due to severe perspective distortion,
-                limited body visibility, and complex camera motion in first-person views. AG-EgoPose is a
-                dual-stream framework that integrates short- and long-range motion context with fine-grained
-                spatial cues. A spatial stream predicts 2D joint heatmaps and embeds them into joint-specific
-                tokens, while a temporal stream extracts action-guided motion features. These representations
-                are fused with a transformer decoder using learnable joint tokens to regress 3D joint coordinates.
-                Experiments on EgoPW and SceneEgo show improved quantitative and qualitative performance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+</div>
 
-    <!-- Method Overview -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Method Overview</h2>
-        <div class="content has-text-justified">
-          <p>
-            AG-EgoPose follows a dual-stream architecture. The spatial stream extracts joint-aware
-            heatmap embeddings from egocentric frames, while the temporal stream captures
-            long-term motion dynamics using ActionFormer. These features are fused using a
-            transformer decoder with learnable joint tokens to regress 3D joint coordinates.
-          </p>
-        </div>
-
-        <figure>
-          <img src="static/images/architecture.png" alt="AG-EgoPose Architecture" loading="lazy">
-          <figcaption class="has-text-centered">
-            Overall architecture of AG-EgoPose: spatial heatmap features and action-informed motion features are fused via a joint-token transformer decoder.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Spatial Heatmap Module -->
-    <section class="section is-light">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Spatial Heatmap Module</h2>
-        <div class="content has-text-justified">
-          <p>
-            The spatial stream employs an encoder–decoder heatmap network with unified skip connections.
-            Multi-scale feature fusion improves joint localization robustness under fisheye distortion.
-          </p>
-        </div>
-
-        <figure>
-          <img src="static/images/heatmap_network.png" alt="Heatmap Network Architecture" loading="lazy">
-          <figcaption class="has-text-centered">
-            Encoder–decoder heatmap network with multi-scale fusion and unified skip connections.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Qualitative Results -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
-        <div class="content has-text-centered">
-          <img src="static/images/qualitative_results.png" alt="Qualitative Results Comparison" loading="lazy">
-          <p class="has-text-justified">
-            Qualitative comparison on SceneEgo and EgoPW. AG-EgoPose produces more stable and anatomically consistent poses under egocentric distortion and partial visibility.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quantitative Results -->
-    <section class="section is-light">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Quantitative Results</h2>
-
-        <div class="content has-text-justified">
-          <h4><strong>EgoPW Dataset</strong></h4>
-          <p>
-            We evaluate AG-EgoPose on the EgoPW dataset using PA-MPJPE (mm). Our method achieves
-            <strong>76.7 mm</strong>, improving over the previous best EgoPW (84.2 mm).
-          </p>
-
-          <table class="table is-striped is-fullwidth results-table">
-            <thead>
-              <tr><th>Method</th><th>PA-MPJPE ↓</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>SelfPose</td><td>112.0</td></tr>
-              <tr><td>Mo2Cap2</td><td>102.3</td></tr>
-              <tr><td>Kolotouros et al.</td><td>88.6</td></tr>
-              <tr><td>EgoHMR</td><td>85.8</td></tr>
-              <tr><td>EgoPW</td><td>84.2</td></tr>
-              <tr class="ours-row"><td><strong>AG-EgoPose (Ours)</strong></td><td><strong>76.7</strong></td></tr>
-            </tbody>
-          </table>
-
-          <br>
-
-          <h4><strong>SceneEgo Dataset (Cross-Dataset Transfer)</strong></h4>
-          <p>
-            After transferring the EgoPW-pretrained model to SceneEgo, AG-EgoPose achieves
-            <strong>104.0 mm MPJPE</strong> and <strong>76.2 mm PA-MPJPE</strong>, improving over the prior best (118.5 / 92.7 mm).
-          </p>
-
-          <table class="table is-striped is-fullwidth results-table">
-            <thead>
-              <tr><th>Method</th><th>MPJPE ↓</th><th>PA-MPJPE ↓</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Mo2Cap2</td><td>200.3</td><td>121.2</td></tr>
-              <tr><td>xR-EgoPose</td><td>241.3</td><td>133.9</td></tr>
-              <tr><td>EgoPW</td><td>189.6</td><td>105.3</td></tr>
-              <tr><td>SceneEgo</td><td>118.5</td><td>92.7</td></tr>
-              <tr class="ours-row"><td><strong>AG-EgoPose (Ours)</strong></td><td><strong>104.0</strong></td><td><strong>76.2</strong></td></tr>
-            </tbody>
-          </table>
-
-          <br>
-
-          <h4><strong>Efficiency</strong></h4>
-          <p>
-            AG-EgoPose improves accuracy while remaining computationally efficient, using
-            <strong>11.4M parameters</strong> and <strong>8.0G FLOPs</strong>.
-          </p>
-
-          <table class="table is-striped is-fullwidth results-table">
-            <thead>
-              <tr><th>Method</th><th>MPJPE ↓</th><th>PA-MPJPE ↓</th><th>Params</th><th>FLOPs</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>xR-EgoPose</td><td>241.3</td><td>133.9</td><td>14.99M</td><td>0.83G</td></tr>
-              <tr><td>SceneEgo</td><td>118.5</td><td>92.7</td><td>11.96M</td><td>8.4G</td></tr>
-              <tr class="ours-row"><td><strong>AG-EgoPose (Ours)</strong></td><td><strong>104.0</strong></td><td><strong>76.2</strong></td><td><strong>11.4M</strong></td><td><strong>8.0G</strong></td></tr>
-            </tbody>
-          </table>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Ablation Studies -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Ablation Studies</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            We analyze the contribution of spatial heatmap features (He), motion features (Fm), and cross-attention fusion (Fd).
-          </p>
-
-          <h4><strong>EgoPW Ablation (PA-MPJPE ↓)</strong></h4>
-          <table class="table is-striped is-fullwidth results-table">
-            <thead>
-              <tr><th>He</th><th>Fm</th><th>Fd</th><th>PA-MPJPE ↓</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>✓</td><td>✓</td><td></td><td>83.1</td></tr>
-              <tr><td>✓</td><td></td><td>✓</td><td>90.8</td></tr>
-              <tr><td></td><td>✓</td><td>✓</td><td>78.8</td></tr>
-              <tr class="ours-row"><td>✓</td><td>✓</td><td>✓</td><td><strong>76.7</strong></td></tr>
-            </tbody>
-          </table>
-
-          <br>
-
-          <h4><strong>SceneEgo Ablation (MPJPE / PA-MPJPE ↓)</strong></h4>
-          <table class="table is-striped is-fullwidth results-table">
-            <thead>
-              <tr><th>He</th><th>Fm</th><th>Fd</th><th>MPJPE ↓</th><th>PA-MPJPE ↓</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>✓</td><td>✓</td><td></td><td>114.3</td><td>81.6</td></tr>
-              <tr><td>✓</td><td></td><td>✓</td><td>113.2</td><td>80.8</td></tr>
-              <tr><td></td><td>✓</td><td>✓</td><td>108.1</td><td>79.6</td></tr>
-              <tr class="ours-row"><td>✓</td><td>✓</td><td>✓</td><td><strong>104.0</strong></td><td><strong>76.2</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Paper (embedded PDF) -->
-    <section class="section is-light">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Paper</h2>
-        <iframe src="static/pdfs/paper.pdf" width="100%" height="750" title="AG-EgoPose Paper PDF"></iframe>
-      </div>
-    </section>
-
-    <!-- BibTeX -->
-    <section class="section" id="BibTeX">
-      <div class="container is-max-desktop content">
-        <div class="bibtex-header">
-          <h2 class="title">BibTeX</h2>
-          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-            <i class="fas fa-copy"></i>
-            <span class="copy-text">Copy</span>
-          </button>
-        </div>
-
-        <pre id="bibtex-code"><code>@article{azam_agegopose,
-  title   = {AG-EgoPose: Leveraging Action-Guided Motion and Kinematic Joint Encoding for Egocentric 3D Pose Estimation},
-  author  = {Azam, Md Mushfiqur and Quarles, John and Desai, Kevin},
-  journal = {Preprint},
-  year    = {2026},
-  url     = {https://github.com/Mushfiq5647/AG-EgoPose}
-}</code></pre>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-10">
-            <div class="content">
-              <p>
-                Code: <a href="https://github.com/Mushfiq5647/AG-EgoPose" target="_blank" rel="noopener">GitHub</a>.
-                <br>
-                Template inspiration: <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <script src="static/js/index.js"></script>
+<script src="static/js/index.js"></script>
 </body>
 </html>
